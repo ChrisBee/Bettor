@@ -1,0 +1,39 @@
+<include src="rapid" plugin="hobo"/>
+
+<include src="taglibs/auto/rapid/cards"/>
+<include src="taglibs/auto/rapid/pages"/>
+<include src="taglibs/auto/rapid/forms"/>
+
+<set-theme name="clean"/>
+
+<def tag="app-name">Soccer World Championship South Africa 2010</def>
+
+<include src="hobo-jquery" plugin="hobo-jquery" />
+<include src="jqgrid" plugin="hobo-jqgrid"/>
+
+
+<extend tag="page">
+  <old-page merge>
+    <custom-scripts:>
+      <hjq-assets/>
+    </custom-scripts>
+  </old-page>
+</extend>
+
+<def tag="card" for="Game">
+  <card class="game" param="default" merge>
+    <header: param>
+    </header:>
+    <body: param>
+      <image src="#{this.home_team.abbreviation}.gif"/>
+      <view:home_team.name/>
+      <%= " : " %>
+      <image src="#{this.away_team.abbreviation}.gif"/>
+      <view:away_team.name/>
+      <view:tingler_time/>
+      <view:home_score/>
+      <%= " : " %>
+      <view:away_score/>
+    </body:>
+  </card>
+</def>

@@ -1,0 +1,81 @@
+<!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
+
+<def tag="card" for="Bet">
+  <card class="bet" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="Colmodel">
+  <card class="colmodel" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="Game">
+  <card class="game" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="GameType">
+  <card class="game-type" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="Group">
+  <card class="group" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <ht key="teams.collection.count" count="&this.teams.size">
+         <count:teams param/>
+      </ht>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="Stadium">
+  <card class="stadium" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <ht key="games.collection.count" count="&this.games.size">
+         <count:games param/>
+      </ht>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="Team">
+  <card class="team" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <ht key="home_games.collection.count" count="&this.home_games.size">
+         <count:home_games param/>
+      </ht>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="User">
+  <card class="user" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+

@@ -1,0 +1,65 @@
+<page title="Home">
+
+  <body: class="front-page"/>
+
+  <content:>
+    <header class="content-header">
+      <h1>Welcome to <app-name/></h1>
+      <section class="welcome-message"  if="&!logged_in?">
+        <ul>
+          <li>Sign up and make your bets!</li>
+        </ul>
+
+        <% if User.count == 0 -%>
+          <h3 style="margin-top: 20px;">There are no user accounts - please provide the details of the site administrator</h3>
+          <do with="&User.new"><% this.exempt_from_edit_checks = true %>
+            <signup-form/>
+          </do>
+        <% end -%>
+
+
+      </section>
+      <jqgrid-includes/>
+    </header>
+
+    <section class="content-body" if="&logged_in?">
+
+      <h3>Your Bets</h3>
+
+      
+
+      <div part="bets">
+        <form with="&current_user">
+          <table>
+          <repeat:bets>
+            <tr>
+              <td>
+             <hidden-id-field/>
+             </td><td>
+             <image src="#{this.game.home_team.abbreviation}.gif"/>
+             </td><td>
+             <view:game.home_team.name/>
+             </td><td>
+             <%= " : " %>
+             </td><td>
+             <image src="#{this.game.away_team.abbreviation}.gif"/>
+             </td><td>
+             <view:game.away_team.name/>
+             </td><td>
+             <view:game.tingler_time/>
+             </td><td>
+             <input:home_score/>
+             </td><td>
+             <input:away_score/>
+             </td>
+            </tr>
+          </repeat>
+          </table>
+          <submit label="Go!"/>
+        </form>
+      </div>
+
+    </section>
+  </content:>
+
+</page>

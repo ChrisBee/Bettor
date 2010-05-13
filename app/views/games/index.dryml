@@ -1,0 +1,23 @@
+<index-page>
+  <content-body:>
+    <h3>Group Games</h3>
+    <table       with="&@group_games"
+                 fields="home_team.abbreviation, home_team.name, vs, away_team.abbreviation, away_team.name, tingler_time, home_score, away_score"
+                 field-tag="view">
+      <home_team_name-heading:>Home Team</home_team_name-heading:>
+      <away_team_name-heading:>Away Team</away_team_name-heading:>
+      <home_team_abbreviation-heading:></home_team_abbreviation-heading:>
+      <away_team_abbreviation-heading:></away_team_abbreviation-heading:>
+      <home_team_abbreviation-view:><image src="#{this}.gif"/></home_team_abbreviation-view:>
+      <away_team_abbreviation-view:><image src="#{this}.gif"/></away_team_abbreviation-view:>
+      <vs-view:>:</vs-view:>
+      <home_score-view:><else></else></home_score-view:>
+      <away_score-view:><else></else></away_score-view:>
+    </table>
+
+    <repeat with="&@group_games.group_by(&:group)">
+      <h4>Group: <a with="&this_key"/></h4>
+      <collection/>
+    </repeat>
+  </content-body:>
+</index-page>

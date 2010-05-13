@@ -1,0 +1,51 @@
+<page title="Home">
+
+  <body: class="front-page"/>
+
+  <content:>
+    <header class="content-header">
+      <h1>Welcome to <app-name/></h1>
+      <section class="welcome-message"  if="&!logged_in?">
+        <ul>
+          <li>Sign up and make your bets!</li>
+        </ul>
+
+        <% if User.count == 0 -%>
+          <h3 style="margin-top: 20px;">There are no user accounts - please provide the details of the site administrator</h3>
+          <do with="&User.new"><% this.exempt_from_edit_checks = true %>
+            <signup-form/>
+          </do>
+        <% end -%>
+
+
+      </section>
+      <jqgrid-includes/>
+    </header>
+
+    <section class="content-body" if="&logged_in?">
+
+      <h3>Your Bets</h3>
+
+      <div part="bets">
+        <form action="/bets/update" method="PUT">
+          <table:bets  with="&current_user" 
+                       fields="game.home_team.abbreviation, game.home_team.name, vs, game.away_team.abbreviation, game.away_team.name, game.tingler_time, home_score, away_score, id"
+                       field-tag="input">
+            <game_home_team_name-heading:>Home Team</game_home_team_name-heading:>
+            <game_away_team_name-heading:>Away Team</game_away_team_name-heading:>
+            <game_home_team_abbreviation-heading:></game_home_team_abbreviation-heading:>
+            <game_away_team_abbreviation-heading:></game_away_team_abbreviation-heading:>
+            <game_home_team_abbreviation-view:><image src="#{this}.gif"/></game_home_team_abbreviation-view:>
+            <game_away_team_abbreviation-view:><image src="#{this}.gif"/></game_away_team_abbreviation-view:>
+            <away_score-view:><input:away_score/></away_score-view:>
+            <vs-view:>:</vs-view:>
+            <id-view:><input hidden name="id">#{this}</input></id-view:>
+          </table>
+          <submit label="Go!"/>
+        </form>
+      </div>
+
+    </section>
+  </content:>
+
+</page>

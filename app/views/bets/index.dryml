@@ -1,0 +1,24 @@
+<index-page>
+  <append-scripts:>
+    <jqgrid-includes/>
+  </append-scripts:>
+  <content-body:>
+    <jqgrid id="betgrid"
+            rownum="10"
+            colnames="'Home Score','Away Score','Home Team','Away Team','User Name'"
+            colmodel=" {name:'home_score',index:'home_score',editable:true}\
+                      ,{name:'away_score',index:'away_score',editable:true}\
+                      ,{name:'home_team_name',index:'home_team_name'}\
+                      ,{name:'game.id',index:'away_team_name'}\
+                      ,{name:'user_id',index:'user_id'}\
+                      "
+            pager
+            rowedit
+            editurl="/bets/set_score"
+            search
+            viewrecords
+            refresh
+            rowlist="10,20,30"
+            />
+  </content-body:>
+</index-page>
