@@ -1,18 +1,19 @@
-class Group < ActiveRecord::Base
+class GroupRank < ActiveRecord::Base
 
   hobo_model # Don't put anything above this
 
   fields do
-    name        :string
-    description :string
+    position :integer
     timestamps
   end
 
-  has_many :teams
-  has_many :rankings, :class_name => "GroupRank"
-  has_many :candidates, :class_name => "GroupRank" # used for intermediate round teams, links to ranks of first round
+  belongs_to :group
+  belongs_to :next_group, :class_name => "Group"
 
-  validates_presence_of :name
+  belongs_to :team
+
+  has_many   :home_games, :class_name => "Game", :foreign_key => "home_group_rank_id"
+  has_many   :away_games, :class_name => "Game", :foreign_key => "away_group_rank_id"
 
 
   # --- Permissions --- #

@@ -1,0 +1,2 @@
+module GroupRanksHelper
+end

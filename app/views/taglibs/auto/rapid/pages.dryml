@@ -9,7 +9,7 @@
     <nav-item with="&Game"><ht key="games.nav_item">Games</ht></nav-item>
     <nav-item with="&GameType"><ht key="game_types.nav_item">Game Types</ht></nav-item>
     <nav-item with="&Group"><ht key="groups.nav_item">Groups</ht></nav-item>
-    <nav-item with="&Stadium"><ht key="stadia.nav_item">Stadia</ht></nav-item>
+    <nav-item with="&GroupRank"><ht key="group_ranks.nav_item">Group Ranks</ht></nav-item>
   </navigation>
 </def>
 
@@ -374,7 +374,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="home_score, away_score, tingler_time, away_team, game_type, stadium" param/>
+            <field-list fields="short_desc, tingler_time, home_game_role, away_game_role, home_score, away_score, home_points, away_points, away_game, away_group_rank, away_team, game_type, home_game, home_group_rank, stadium" param/>
           </section>
     </content:>
 
@@ -395,6 +395,126 @@
           </ht>
         </h2>
         <delete-button label="#{ht 'games.actions.delete', :default=>['Remove This Game']}" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+
+  </page>
+</def>
+
+
+
+
+
+<!-- ====== GroupRank Pages ====== -->
+
+<def tag="index-page" for="GroupRank">
+  <page merge title="#{ht 'group_ranks.index.title', :default=>['Group Ranks'] }">
+    <body: class="index-page group-rank" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">
+          <ht key="group_ranks.index.heading">
+            Group Ranks
+          </ht>
+        </h2>
+
+        <p param="count" if>
+          <ht key="group_ranks.collection.count" count="&this.size">
+            There <count prefix="are"/>
+          </ht>
+        </p>
+      </header>
+
+      <section param="content-body">
+        <a action="new" to="&model" param="new-link">
+          <ht key="group_ranks.actions.new">New Group Rank</ht>
+        </a>
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="GroupRank">
+  <page merge title="#{ht 'group_ranks.new.title', :default=>[' New Group Rank'] }">
+    <body: class="new-page group-rank" param/>
+
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="group_ranks.new.heading">
+            New Group Rank
+          </ht>
+        </h2>
+      </section>
+
+      <section param="content-body">
+        <form param>
+          <submit: label="#{ht 'group_ranks.actions.create', :default=>['Create Group Rank']}"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="GroupRank">
+  <page merge title="#{ht 'group_ranks.show.title', :default=>['Group Rank'] }">
+
+    <body: class="show-page group-rank" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading">
+              <ht key="group_ranks.show.heading" name="&this.respond_to?(:name) ? this.name : ''">
+                <name/>
+              </ht>
+            </h2>
+
+            <record-flags fields="" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">
+              <ht key="group_ranks.actions.edit" name="&this.respond_to?(:name) ? this.name : ''">
+                Edit Group Rank
+              </ht>
+            </a>
+          </header>
+
+          <section param="content-body">
+            <field-list fields="position, group, next_group, team" param/>
+          </section>
+    </content:>
+
+  </page>
+</def>
+
+
+<def tag="edit-page" for="GroupRank">
+  <page merge title="#{ht 'group_ranks.edit.title', :default=>['Edit Group Rank'] }">
+
+    <body: class="edit-page group-rank" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">
+          <ht key="group_ranks.edit.heading" name="&this.respond_to?(:name) ? this.name : ''">
+            Edit <type-name/>
+          </ht>
+        </h2>
+        <delete-button label="#{ht 'group_ranks.actions.delete', :default=>['Remove This Group Rank']}" param/>
       </section>
 
       <section param="content-body">

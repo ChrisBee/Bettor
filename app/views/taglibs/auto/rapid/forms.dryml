@@ -27,9 +27,21 @@
 <def tag="form" for="Game">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="home_score, away_score, tingler_time, away_team, game_type, home_team, stadium" param/>
+    <field-list fields="short_desc, tingler_time, home_game_role, away_game_role, home_score, away_score, home_points, away_points, away_game, away_group_rank, away_team, game_type, home_game, home_group_rank, home_team, stadium" param/>
     <div param="actions">
       <submit label="#{ht 'games.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
+<def tag="form" for="GroupRank">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="position, group, next_group, team" param/>
+    <div param="actions">
+      <submit label="#{ht 'group_ranks.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>
   </form>
 </def>

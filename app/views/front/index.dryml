@@ -36,15 +36,17 @@
               <td>
              <hidden-id-field/>
              </td><td>
-             <image src="#{this.game.home_team.abbreviation}.gif"/>
+             <if test="&this.game.home_team.nil?"><%= "&nbsp;" %></if>
+             <else><image src="#{this.game.home_team.abbreviation}.gif"/></else>
              </td><td>
-             <view:game.home_team.name/>
+             <view:game.home_team_name/>
              </td><td>
              <%= " : " %>
              </td><td>
-             <image src="#{this.game.away_team.abbreviation}.gif"/>
+             <if test="&this.game.away_team.nil?"><%= "&nbsp;" %></if>
+             <else><image src="#{this.game.away_team.abbreviation}.gif"/></else>
              </td><td>
-             <view:game.away_team.name/>
+             <view:game.away_team_name/>
              </td><td>
              <view:game.tingler_time/>
              </td><td>

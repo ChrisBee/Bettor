@@ -5,7 +5,8 @@ class GamesController < ApplicationController
   auto_actions :all
 
   def index
-    @group_games = Game.find(:all)
+    group_game_type = GameType.find_by_name('Group');
+    @group_games = Game.find(:all, :conditions => {:game_type_id => group_game_type.id})
     hobo_index
   end
 
