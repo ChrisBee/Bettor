@@ -45,6 +45,14 @@
   </card>
 </def>
 
+<def tag="card" for="GroupRank">
+  <card class="group-rank" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
 <def tag="card" for="Stadium">
   <card class="stadium" param="default" merge>
     <header: param>
