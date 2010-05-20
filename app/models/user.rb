@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   fields do
     name          :string, :required, :unique
     email_address :email_address, :login => true
+    time_zone     :string
     administrator :boolean, :default => false
     timestamps
   end

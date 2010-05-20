@@ -38,3 +38,10 @@
     </body:>
   </card>
 </def>
+
+<extend tag="form" for="User">
+  <old-form merge>
+    <field-list: fields="name, email_address, time_zone, administrator, state"/>
+    <time_zone-input:><%= FormOptionsHelper.time_zone_select :time_zone, TimeZone.us_zones  %></time_zone-input>
+  </old-form>
+</extend>
