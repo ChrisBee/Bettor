@@ -36,6 +36,8 @@
               <td>
              <hidden-id-field/>
              </td><td>
+             <view:game.short_desc/>
+             </td><td>
              <if test="&this.game.home_team.nil?"><%= "&nbsp;" %></if>
              <else><image src="#{this.game.home_team.abbreviation}.gif"/></else>
              </td><td>

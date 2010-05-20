@@ -25,6 +25,7 @@
     <header: param>
     </header:>
     <body: param>
+      <a/>
       <image src="#{this.home_team.abbreviation}.gif"/>
       <view:home_team.name/>
       <%= " : " %>

@@ -27,7 +27,9 @@ class Bet < ActiveRecord::Base
   end
 
   def update_permitted?
-    (acting_user == user || acting_user.administrator?) && !user.changed?
+    (acting_user == user || acting_user.administrator?) && 
+      !user.changed? &&
+      Time.now <= game._?.tingler_time
   end
 
   def destroy_permitted?

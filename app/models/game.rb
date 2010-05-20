@@ -3,10 +3,10 @@ class Game < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
-    short_desc   :string
+    short_desc   :string, :name
     tingler_time :datetime
-    home_game_role enum_string(:W, :L)
-    away_game_role enum_string(:W, :L)
+    home_game_role enum_string(:nil, :W, :L)
+    away_game_role enum_string(:nil, :W, :L)
     home_score   :integer
     away_score   :integer
     home_points  :integer
@@ -29,13 +29,13 @@ class Game < ActiveRecord::Base
 
   validates_presence_of :short_desc, :tingler_time, :game_type
 
-  def name
-    if home_team.nil? || away_team.nil? || tingler_time.nil?
-      "Unknown game " + id.to_s
-    else
-      home_team.name + " - " + away_team.name + " @ " + tingler_time.to_s
-    end
-  end
+#  def name
+#    if home_team.nil? || away_team.nil? || tingler_time.nil?
+#      "Unknown game " + id.to_s
+#    else
+#      home_team.name + " - " + away_team.name + " @ " + tingler_time.to_s
+#    end
+#  end
 
   def home_team_name
     if !home_team.nil?
@@ -83,7 +83,7 @@ class Game < ActiveRecord::Base
   end
 
   def update_permitted?
-    acting_user.administrator? && (Time.now < tingler_time + 1.day)
+    acting_user.administrator?
   end
 
   def destroy_permitted?
