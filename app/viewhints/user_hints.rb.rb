@@ -1,6 +1,6 @@
 class UserHints < Hobo::ViewHints
 
-  children :bets
+#  children :bets
 
   # model_name "My Model"
   # field_names :field1 => "First Field", :field2 => "Second Field"

@@ -1,5 +1,7 @@
 class StadiumHints < Hobo::ViewHints
 
+  model_name "Venue"
+  
   children :games
 
   # model_name "My Model"

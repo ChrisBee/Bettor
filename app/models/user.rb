@@ -20,10 +20,12 @@ class User < ActiveRecord::Base
   after_create :create_missing_bets
 
   def create_missing_bets
-    if bets.nil?
-      Game.find(:all).each{ |game| Bet.create :game => game, :user => self }
-    else
-      (Game.find(:all) - bets.map { |b| b.game } ).each{ |game| Bet.create :game => game, :user => self }
+    if update_permitted?
+      if bets.nil?
+        Game.find(:all).each{ |game| Bet.create :game => game, :user => self }
+      else
+        (Game.find(:all) - bets.map { |b| b.game } ).each{ |game| Bet.create :game => game, :user => self }
+      end
     end
   end
 
@@ -56,7 +58,7 @@ class User < ActiveRecord::Base
 
   def update_permitted?
     acting_user.administrator? || 
-      (acting_user == self && only_changed?(:email_address, :crypted_password,
+      (acting_user == self && only_changed?(:name, :email_address, :crypted_password,
                                             :current_password, :password, :password_confirmation, :time_zone))
     # Note: crypted_password has attr_protected so although it is permitted to change, it cannot be changed
     # directly from a form submission.

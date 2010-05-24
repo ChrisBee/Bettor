@@ -2,9 +2,9 @@
   
 <include src="rapid" plugin="hobo"/>
 
-<include src="taglibs/auto/admin/rapid/cards"/>
-<include src="taglibs/auto/admin/rapid/pages"/>
-<include src="taglibs/auto/admin/rapid/forms"/>
+<include src="taglibs/auto/rapid/cards"/>
+<include src="taglibs/auto/rapid/pages"/>
+<include src="taglibs/auto/rapid/forms"/>
 
 <set-theme name="clean"/>
 
@@ -20,3 +20,13 @@
     </footer:>
   </old-page>
 </extend>
+
+<def tag="main-nav">
+  <navigation class="main-nav" merge-attrs param="default">
+    <nav-item href="#{base_url}/admin">Home</nav-item>
+    <% models = Hobo::Model.all_models.select { |m| linkable?(m, :index) }.sort_by &:name -%>
+    <repeat with="&models">
+      <nav-item><ht key="#{this.name.tableize}.nav_item"><%= this.view_hints.model_name_plural %></ht></nav-item>
+    </repeat>
+  </navigation>
+</def>

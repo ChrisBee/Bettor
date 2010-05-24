@@ -3,7 +3,7 @@
 <def tag="card" for="Bet">
   <card class="bet" param="default" merge>
     <header: param>
-      <h4 param="heading"><name/></h4>
+      <h4 param="heading"><a><name/></a></h4>
     </header:>
   </card>
 </def>
@@ -27,11 +27,8 @@
 <def tag="card" for="GameType">
   <card class="game-type" param="default" merge>
     <header: param>
-      <h4 param="heading"><name/></h4>
+      <h4 param="heading"><a><name/></a></h4>
     </header:>
-    <body: param>
-      <view:description param="description"/>
-    </body:>
   </card>
 </def>
 
@@ -51,7 +48,7 @@
 <def tag="card" for="GroupRank">
   <card class="group-rank" param="default" merge>
     <header: param>
-      <h4 param="heading"><name/></h4>
+      <h4 param="heading"><a><name/></a></h4>
     </header:>
   </card>
 </def>

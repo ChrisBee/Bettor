@@ -5,10 +5,9 @@ class FrontController < ApplicationController
   before_filter :set_time_zone
 
   def set_time_zone
-    utz = @current_user.try.time_zone
-    Time.zone = utz if utz
+    user_tz = @current_user.try.time_zone
+    Time.zone = user_tz if user_tz
   end
-  # TODO: http://mad.ly/2008/04/09/rails-21-time-zone-support-an-overview/
   # TODO: why does this not work in the application controller itself??
 
   def index

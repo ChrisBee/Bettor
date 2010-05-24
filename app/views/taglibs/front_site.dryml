@@ -20,6 +20,12 @@
   </old-page>
 </extend>
 
+<extend tag="form" for="User">
+  <old-form merge>
+    <field-list: fields="name, email_address, time_zone, administrator, state"/>
+  </old-form>
+</extend>
+
 <def tag='input' for='TimeZone' attrs='priority-zones, first-option, first-value'><%
   priority_zones ||= {}
   selected = this || "Bern"
@@ -36,11 +42,13 @@
     </header:>
     <body: param>
       <a/>
-      <image src="#{this.home_team.abbreviation}.gif"/>
-      <view:home_team.name/>
+             <if test="&this.home_team.nil?"><%= "&nbsp;" %></if>
+             <else><image src="#{this.home_team.abbreviation}.gif"/></else>
+      <view:home_team_name/>
       <%= " : " %>
-      <image src="#{this.away_team.abbreviation}.gif"/>
-      <view:away_team.name/>
+             <if test="&this.away_team.nil?"><%= "&nbsp;" %></if>
+             <else><image src="#{this.away_team.abbreviation}.gif"/></else>
+      <view:away_team_name/>
       <view:tingler_time/>
       <view:home_score/>
       <%= " : " %>
