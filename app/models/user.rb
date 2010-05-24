@@ -20,12 +20,10 @@ class User < ActiveRecord::Base
   after_create :create_missing_bets
 
   def create_missing_bets
-    if update_permitted?
-      if bets.nil?
-        Game.find(:all).each{ |game| Bet.create :game => game, :user => self }
-      else
-        (Game.find(:all) - bets.map { |b| b.game } ).each{ |game| Bet.create :game => game, :user => self }
-      end
+    if bets.nil?
+      Game.find(:all).each{ |game| Bet.create :game => game, :user => self }
+    else
+      (Game.find(:all) - bets.map { |b| b.game } ).each{ |game| Bet.create :game => game, :user => self }
     end
   end
 
