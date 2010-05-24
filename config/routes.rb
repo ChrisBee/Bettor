@@ -1,5 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
 
+  map.site_search  'search', :controller => 'admin/front', :action => 'search'
+  map.admin '/admin', :controller => 'admin/front', :action => 'index'
+
   map.site_search  'search', :controller => 'front', :action => 'search'
   map.root :controller => 'front', :action => 'index'
 
