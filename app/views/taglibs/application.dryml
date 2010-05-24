@@ -20,6 +20,16 @@
   </old-page>
 </extend>
 
+<def tag='input' for='TimeZone' attrs='priority-zones, first-option, first-value'><%
+  priority_zones ||= {}
+  selected = this || "Bern"
+  %>
+  <select name='#{param_name_for_this}' merge-attrs>
+    <option value='#{first_value}' unless='&first_option.nil?'><first-option/></option>
+    <%= time_zone_options_for_select(selected, priority_zones) %>
+  </select>
+</def>
+
 <def tag="card" for="Game">
   <card class="game" param="default" merge>
     <header: param>
@@ -38,10 +48,3 @@
     </body:>
   </card>
 </def>
-
-<extend tag="form" for="User">
-  <old-form merge>
-    <field-list: fields="name, email_address, time_zone, administrator, state"/>
-    <time_zone-input:><%= FormOptionsHelper.time_zone_select :time_zone, TimeZone.us_zones  %></time_zone-input>
-  </old-form>
-</extend>
