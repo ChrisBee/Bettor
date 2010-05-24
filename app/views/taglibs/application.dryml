@@ -1,1 +1,27 @@
 <!-- Global taglib - these tags are shared across all subsites -->
+
+<include src="hobo-jquery" plugin="hobo-jquery" />
+<include src="jqgrid" plugin="hobo-jqgrid"/>
+
+<def tag="nil-view"></def>
+
+<def tag="card" for="Game">
+  <card class="game" param="default" merge>
+    <header: param>
+    </header:>
+    <body: param>
+      <a/>
+      <if test="&this.home_team.nil?"><%= "&nbsp;" %></if>
+      <else><image src="#{this.home_team.abbreviation}.gif"/></else>
+      <view:home_team_name/>
+      <%= " : " %>
+      <if test="&this.away_team.nil?"><%= "&nbsp;" %></if>
+      <else><image src="#{this.away_team.abbreviation}.gif"/></else>
+      <view:away_team_name/>
+      <view:tingler_time/>
+      <view:home_score/>
+      <%= " : " %>
+      <view:away_score/>
+    </body:>
+  </card>
+</def>

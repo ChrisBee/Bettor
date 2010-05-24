@@ -101,7 +101,7 @@
           </header>
 
           <section param="content-body">
-            <field-list fields="home_score, away_score, game, user" param/>
+            <field-list fields="home_score, away_score, points, game, user" param/>
           </section>
     </content:>
 

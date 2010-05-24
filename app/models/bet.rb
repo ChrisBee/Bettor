@@ -4,7 +4,8 @@ class Bet < ActiveRecord::Base
 
   fields do
     home_score   :integer
-    away_score :integer
+    away_score   :integer
+    points       :integer
     timestamps
   end
 

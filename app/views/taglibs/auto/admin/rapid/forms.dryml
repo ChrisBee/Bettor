@@ -3,7 +3,7 @@
 <def tag="form" for="Bet">
   <form merge param="default">
     <error-messages param/>
-    <field-list fields="home_score, away_score, game, user" param/>
+    <field-list fields="home_score, away_score, points, game, user" param/>
     <div param="actions">
       <submit label="#{ht 'bets.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
     </div>

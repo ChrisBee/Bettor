@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def total_points
+    connection.select_value("select sum(points) as total_points from bets where user_id = #{self.id}").to_i
+  end
+
   
   # --- Signup lifecycle --- #
 

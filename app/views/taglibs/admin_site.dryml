@@ -2,9 +2,11 @@
   
 <include src="rapid" plugin="hobo"/>
 
-<include src="taglibs/auto/rapid/cards"/>
-<include src="taglibs/auto/rapid/pages"/>
-<include src="taglibs/auto/rapid/forms"/>
+<include src="taglibs/auto/admin/rapid/cards"/>
+<include src="taglibs/auto/admin/rapid/pages"/>
+<include src="taglibs/auto/admin/rapid/forms"/>
+
+<include src="taglibs/application"/>
 
 <set-theme name="clean"/>
 

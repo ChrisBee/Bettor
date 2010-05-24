@@ -4,7 +4,6 @@
 
   <content:>
     <header class="content-header">
-      <h1>Welcome to <app-name/></h1>
       <section class="welcome-message"  if="&!logged_in?">
         <ul>
           <li>Sign up and make your bets!</li>
@@ -19,14 +18,12 @@
 
 
       </section>
-      <jqgrid-includes/>
     </header>
 
     <section class="content-body" if="&logged_in?">
 
+      <h3>Hi <%= current_user.name %>! You've got <%=current_user.total_points %> points!</h3>
       <h3>Your Bets</h3>
-
-      
 
       <div part="bets">
         <form with="&current_user">
@@ -55,6 +52,12 @@
              <input:home_score/>
              </td><td>
              <input:away_score/>
+             </td><td>
+             <view:game.home_score/>
+             </td><td>
+             <view:game.away_score/>
+             </td><td>
+             <view:points/>
              </td>
             </tr>
           </repeat>

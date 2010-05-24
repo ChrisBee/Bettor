@@ -29,6 +29,8 @@ class Game < ActiveRecord::Base
 
   validates_presence_of :short_desc, :tingler_time, :game_type
 
+  after_update :set_bet_points
+
 #  def name
 #    if home_team.nil? || away_team.nil? || tingler_time.nil?
 #      "Unknown game " + id.to_s
@@ -73,6 +75,28 @@ class Game < ActiveRecord::Base
 #    if !game_type.nil? && game_type.name == "Group"
       home_team.group
 #    end
+  end
+
+  def set_bet_points
+    if self.home_score && self.away_score && ( self.home_score_changed? || self.away_score_changed?)
+      self.bets.each do |bet|
+        if bet.home_score && bet.away_score
+          if bet.home_score == self.home_score && bet.away_score == self.away_score
+            # exact bet
+            bet.points = 10
+          elsif self.home_score > self.away_score && bet.home_score > bet.away_score ||
+                self.home_score < self.away_score && bet.home_score < bet.away_score ||
+                self.home_score == self.away_score && bet.home_score == bet.away_score
+            # correct result
+            bet.points = 5
+          else
+            bet.points = 0
+          end
+          # save bet
+          bet.save
+        end
+      end
+    end
   end
 
 

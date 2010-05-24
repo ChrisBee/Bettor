@@ -4,13 +4,11 @@
 <include src="taglibs/auto/rapid/pages"/>
 <include src="taglibs/auto/rapid/forms"/>
 
+<include src="taglibs/application"/>
+
 <set-theme name="clean"/>
 
 <def tag="app-name">Soccer World Championship South Africa 2010</def>
-
-<include src="hobo-jquery" plugin="hobo-jquery" />
-<include src="jqgrid" plugin="hobo-jqgrid"/>
-
 
 <extend tag="page">
   <old-page merge>
@@ -36,23 +34,3 @@
   </select>
 </def>
 
-<def tag="card" for="Game">
-  <card class="game" param="default" merge>
-    <header: param>
-    </header:>
-    <body: param>
-      <a/>
-             <if test="&this.home_team.nil?"><%= "&nbsp;" %></if>
-             <else><image src="#{this.home_team.abbreviation}.gif"/></else>
-      <view:home_team_name/>
-      <%= " : " %>
-             <if test="&this.away_team.nil?"><%= "&nbsp;" %></if>
-             <else><image src="#{this.away_team.abbreviation}.gif"/></else>
-      <view:away_team_name/>
-      <view:tingler_time/>
-      <view:home_score/>
-      <%= " : " %>
-      <view:away_score/>
-    </body:>
-  </card>
-</def>

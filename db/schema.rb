@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100520143657) do
+ActiveRecord::Schema.define(:version => 20100524111241) do
 
   create_table "bets", :force => true do |t|
     t.integer  "home_score"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20100520143657) do
     t.datetime "updated_at"
     t.integer  "game_id"
     t.integer  "user_id"
+    t.integer  "points"
   end
 
   add_index "bets", ["game_id"], :name => "index_bets_on_game_id"
