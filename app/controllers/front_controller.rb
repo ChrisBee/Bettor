@@ -10,11 +10,6 @@ class FrontController < ApplicationController
   end
   # TODO: why does this not work in the application controller itself??
 
-  def index
-#    @bets = Bet.find(:all)
-    @thebets = Bet.find(:all)
-  end
-
   def summary
     if !current_user.administrator?
       redirect_to user_login_path

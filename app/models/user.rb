@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     timestamps
   end
 
-  has_many        :bets, :accessible => true
+  has_many        :bets, :accessible => true, :include => :game, :order => "games.tingler_time, games.short_desc"
   accepts_nested_attributes_for :bets
 
 
