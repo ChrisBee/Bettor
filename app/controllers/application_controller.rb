@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_time_zone
 
+private
+
   def set_time_zone
     puts "*** Application Controller before_filter"
     user_tz = @current_user.try.time_zone

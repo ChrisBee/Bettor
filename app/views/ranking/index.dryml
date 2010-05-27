@@ -1,0 +1,26 @@
+<page title="Ranking">
+
+  <body: class="front-page"/>
+
+  <content:>
+
+    <section class="content-body">
+
+      <div part="bettors">
+        <table>
+          <repeat with="&@bettors">
+            <tr>
+              <td>
+                <view:name/>
+              </td><td>
+                <view:total_points/>
+              </td>
+            </tr>
+          </repeat>
+        </table>
+      </div>
+
+    </section>
+  </content:>
+
+</page>
