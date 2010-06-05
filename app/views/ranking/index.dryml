@@ -20,6 +20,10 @@
         </table>
       </div>
 
+      <div part="graph">
+        <embed src="<%= url_for :action => "graph" %>" />
+      </div>
+
     </section>
   </content:>
 

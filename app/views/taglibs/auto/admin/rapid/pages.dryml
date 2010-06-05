@@ -1046,7 +1046,7 @@
               </ht>
             </h2>
 
-            <record-flags fields="administrator" param/>
+            <record-flags fields="administrator, paid" param/>
 
             <a action="edit" if="&can_edit?" param="edit-link">
               <ht key="users.actions.edit" name="&this.respond_to?(:name) ? this.name : ''">

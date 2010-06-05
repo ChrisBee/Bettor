@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100524111241) do
+ActiveRecord::Schema.define(:version => 20100605014810) do
 
   create_table "bets", :force => true do |t|
     t.integer  "home_score"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20100524111241) do
     t.string   "state",                                   :default => "active"
     t.datetime "key_timestamp"
     t.string   "time_zone"
+    t.boolean  "paid",                                    :default => false
   end
 
   add_index "users", ["state"], :name => "index_users_on_state"
