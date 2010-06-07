@@ -83,13 +83,20 @@ class Game < ActiveRecord::Base
         if bet.home_score && bet.away_score
           if bet.home_score == self.home_score && bet.away_score == self.away_score
             # exact bet
-            bet.points = 10
+            bet.points = 5
           elsif self.home_score > self.away_score && bet.home_score > bet.away_score ||
                 self.home_score < self.away_score && bet.home_score < bet.away_score ||
                 self.home_score == self.away_score && bet.home_score == bet.away_score
             # correct result
-            bet.points = 5
+            if self.home_score - self.away_score == bet.home_score - bet.away_score
+              # correct score diff
+              bet.points = 4
+            else
+              # incorrect score diff
+              bet.points = 3
+            end # correct result
           else
+            # incorrect bet
             bet.points = 0
           end
           # save bet
