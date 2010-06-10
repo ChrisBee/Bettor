@@ -32,6 +32,20 @@ class User < ActiveRecord::Base
     connection.select_value("select sum(points) as total_points from bets where user_id = #{self.id}").to_i
   end
 
+  def points_per_tingler_time
+    connection.select_all("
+        select users.name, games.tingler_time, sum(bets.points) points
+        from   bets
+          inner join games
+                  on bets.game_id = games.id
+          inner join users
+                  on bets.user_id = users.id
+        where  users.paid = 1
+        and    bets.points is not null
+        group by users.name, games.tingler_time
+                          ")
+  end
+
   
   # --- Signup lifecycle --- #
 
