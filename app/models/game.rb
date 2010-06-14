@@ -106,7 +106,6 @@ class Game < ActiveRecord::Base
     end
   end
 
-
   # --- Permissions --- #
 
   def create_permitted?

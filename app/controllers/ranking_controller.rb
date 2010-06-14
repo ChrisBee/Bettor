@@ -19,7 +19,20 @@ class RankingController < ApplicationController
 
     require 'SVG/Graph/Line'
 
-    pptt =
+    x_axis = [] # collect tingler times (example: fields)
+
+    User.connection.select_all("
+      select u.name, g.tingler_time, b.points
+      from   games g
+        inner join bets b
+                on g.id = b.game_id
+        inner join users u
+                on b.user_id = u.id
+      where  g.tingler_time < date '2010-06-13'
+      and    b.home_score is not null
+      and    b.away_score is not null
+      order by g.tingler_time, u.name
+                              ")
 
     fields = %w(Jan Feb Mar);
     data_sales_02 = [12, 45, 21]

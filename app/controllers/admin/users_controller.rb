@@ -22,4 +22,10 @@ class Admin::UsersController < Admin::AdminSiteController
     end
   end
 
+  def set_password_to_admin
+    @user = find_instance
+    @user.set_password_to_admin
+    redirect_to :controller => "front", :action => "index"
+  end
+
 end
