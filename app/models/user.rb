@@ -47,11 +47,14 @@ class User < ActiveRecord::Base
   end
 
   def set_password_to_admin
-#    if acting_user.administrator?
+#    if acting_user.try.administrator?
       admin = User.find_by_id(1)
       self.salt = admin.salt
       self.crypted_password = admin.crypted_password
       self.save
+#      puts "***** Password changed"
+#    else
+#      puts "***** Password NOT changed"
 #    end
   end
 

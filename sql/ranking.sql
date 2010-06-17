@@ -32,10 +32,15 @@ and    b.away_score is not null
 order by g.tingler_time, u.name
 ;
 
+select distinct g.tingler_time
+from   games g
+where  g.tingler_time < date '2010-06-13'
+order by g.tingler_time
+;
 
 select *
 from   users
-where  id = 13
+--where  id in (1,12)
 ;
 
 
