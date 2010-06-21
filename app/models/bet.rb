@@ -13,6 +13,7 @@ class Bet < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :game, :user
+  validate_on_update :validate_update
 
   def name
     "Bet Number " + id.to_s
@@ -23,13 +24,20 @@ class Bet < ActiveRecord::Base
   end
   # --- Permissions --- #
 
+  def validate_update
+    if home_score_changed? || away_score_changed?
+      if Time.zone.now > game.tingler_time
+        errors.add_to_base("Tingler time is in the past - don't try to cheat!")
+      end
+    end
+  end
+
   def create_permitted?
     acting_user.administrator?
   end
 
   def update_permitted?
     (acting_user == user || acting_user.administrator?) && 
-      !user.changed? &&
       Time.zone.now <= game._?.tingler_time
   end
 

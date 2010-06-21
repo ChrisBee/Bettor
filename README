@@ -4,3 +4,7 @@ Bettor is an application to place bets on championships (soccer, ice hockey, etc
 
 It is currently in alpha status and supports the soccer world championship 2010 in
 South Africa only.
+
+TODO:
+
+= DEPRECATION WARNING: Rake tasks in vendor/plugins/hobo-jqgrid/tasks and vendor/plugins/hobo-jquery/tasks are deprecated. Use lib/tasks instead. (called from /usr/local/lib/ruby/gems/1.8/gems/rails-2.3.8/lib/tasks/rails.rb:10)

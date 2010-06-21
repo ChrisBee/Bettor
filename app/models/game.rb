@@ -81,6 +81,7 @@ class Game < ActiveRecord::Base
     if self.home_score && self.away_score && ( self.home_score_changed? || self.away_score_changed?)
       self.bets.each do |bet|
         if bet.home_score && bet.away_score
+          bet.points = 0
           if bet.home_score == self.home_score && bet.away_score == self.away_score
             # exact bet
             bet.points = 5

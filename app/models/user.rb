@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   end
 
   has_many        :bets, :accessible => true, :include => :game, :order => "games.tingler_time, games.short_desc"
-  accepts_nested_attributes_for :bets
+ # accepts_nested_attributes_for :bets
 
 
   # This gives admin rights to the first sign-up.

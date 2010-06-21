@@ -3585,13 +3585,8 @@ Form.Element.Methods = {
 
   getValue: function(element) {
     element = $(element);
-    if (element) {
-	  if (element.tagName) {
-        var method = element.tagName.toLowerCase();
-        return Form.Element.Serializers[method](element);
-	  }
-	}
-	return null;
+    var method = element.tagName.toLowerCase();
+    return Form.Element.Serializers[method](element);
   },
 
   setValue: function(element, value) {
