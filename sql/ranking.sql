@@ -51,3 +51,32 @@ JOIN votes v2 ON v1.votes < v2.votes OR (v1.votes=v2.votes and v1.name = v2.name
 GROUP BY v1.name, v1.votes
 ORDER BY v1.votes DESC, v1.name DESC
 ; 
+
+
+
+select u.name, count(*), sum(b.points)--, g.tingler_time, b.updated_at
+from   games g
+  inner join bets b
+          on g.id = b.game_id
+  inner join users u
+          on b.user_id = u.id
+where  b.home_score is not null 
+and    b.away_score is not null
+and    b.updated_at > g.tingler_time
+group by u.name
+order by u.name, g.tingler_time, u.name
+;
+
+select u.name, g.tingler_time, b.updated_at, g.updated_at, b.points
+from   games g
+  inner join bets b
+          on g.id = b.game_id
+  inner join users u
+          on b.user_id = u.id
+where  b.home_score is not null 
+and    b.away_score is not null
+and    b.updated_at > g.tingler_time
+--and    b.updated_at > g.updated_at
+and    g.short_desc = '32'
+order by u.name, g.tingler_time, u.name
+;

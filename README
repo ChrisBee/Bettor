@@ -7,4 +7,23 @@ South Africa only.
 
 TODO:
 
-= DEPRECATION WARNING: Rake tasks in vendor/plugins/hobo-jqgrid/tasks and vendor/plugins/hobo-jquery/tasks are deprecated. Use lib/tasks instead. (called from /usr/local/lib/ruby/gems/1.8/gems/rails-2.3.8/lib/tasks/rails.rb:10)
+* resolve DEPRECATION WARNING: Rake tasks in vendor/plugins/hobo-jqgrid/tasks and vendor/plugins/hobo-jquery/tasks are deprecated. Use lib/tasks instead. (called from /usr/local/lib/ruby/gems/1.8/gems/rails-2.3.8/lib/tasks/rails.rb:10)
+* automatically determine group ranks => function to set 'em
+* show country flag and name even if the game is between two other games or group_ranks
+* show group ranking lists
+* group bets on front page per round (group, round of 16, quarter final, etc)
+* make sure bets cannot be changed after tingler time with standard hobo update_permitted?
+* resolve errors upon heroku push
+* add link to game from front page (bets) for administrators -> directly to edit form to set the result
+* restrict list of teams in group rank edit to teams of the group the group rank is for
+* integrate flot/flotilla for graphs
+* add test cases...
+* use hobo lifecycles for users / championship members
+* allow for bets on penalty / overtime?
+* configure ranking options (score diff/score shot/direct game, win points, tie points, overtime flag, penalty flag) ...
+
+* introduce multiple championship support
+* make points for bets configurable
+* add support for "special questions" in addition to the bets on the game results
+* improve look and feel
+* allow file based import of championships?

@@ -44,7 +44,11 @@ class Game < ActiveRecord::Base
       home_team.name
     else
       if !home_group_rank.nil?
-        home_group_rank.group.name + home_group_rank.position.to_s
+        if !home_group_rank.team.nil?
+          home_group_rank.team.name
+        else
+          home_group_rank.group.name + home_group_rank.position.to_s
+        end
       else
         if !home_game.nil?
           home_game_role + home_game.short_desc
@@ -60,7 +64,11 @@ class Game < ActiveRecord::Base
       away_team.name
     else
       if !away_group_rank.nil?
-        away_group_rank.group.name + away_group_rank.position.to_s
+        if !away_group_rank.team.nil?
+          away_group_rank.team.name
+        else
+          away_group_rank.group.name + away_group_rank.position.to_s
+        end
       else
         if !away_game.nil?
           away_game_role + away_game.short_desc

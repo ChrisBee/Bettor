@@ -1,6 +1,6 @@
-rails -v '2.3.8'
-will_paginate -v '2.3.12'
-hobosupport -v '1.0.1'
+#rails -v '2.3.8'
+#will_paginate -v '2.3.12'
+hobosupport -v '1.0.0'
 hobofields --ignore-dependencies
-hobo -v '1.0.1' --ignore-dependencies
+hobo -v '1.0.0' --ignore-dependencies
 svg-graph -v '1.0.1'
